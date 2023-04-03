@@ -1,11 +1,8 @@
 import sys
 
 from geom import *
-from hat import hat
-from kitegrid import *
 from patchmap import *
 
-hat_halo = getHalo( hat )
 
 def getLegalNeighbours( allow_holes = False ):
 	'''Construct a set of transformation matrices that carry the

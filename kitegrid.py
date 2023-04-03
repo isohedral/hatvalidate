@@ -6,8 +6,6 @@
 ### (and a fraction of the hexagons don't have a corresponding kite).
 ### See the illustration in kitegrid.pdf.
 
-import sys
-
 from geom import Point, Transform
 
 c_offsets = [
@@ -84,8 +82,6 @@ def getHaloStart( sop ):
 	'''Get a suitable starting cell for an ordered halo.  This is any
 	cell in sop that's adjacent to a cell not in sop across one of its
 	edges.  Return the cell and the halo neighbour.'''
-
-	start = None
 
 	for p in sop:
 		ans = getAdjacents( p )
