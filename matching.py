@@ -1,6 +1,6 @@
 import sys
 
-from geom import Point, Transform
+from geom import Transform
 
 def readPatches( fin ):
 	'''Read an input file and extract all the patches.  Return a list of

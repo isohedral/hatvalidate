@@ -1,7 +1,6 @@
 ### Basic geometry classes: points and affine transformations with
 ### integer coordinates.
 
-import math
 from functools import total_ordering
 
 @total_ordering

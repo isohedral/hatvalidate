@@ -4,7 +4,6 @@
 ### transformed tiles could potentially occupy those cells.  Used as part
 ### of recursively surrounding (n-1)-patches to construct n-patches.
 
-from geom import *
 from hat import *
 from kitegrid import *
 
