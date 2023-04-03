@@ -1,10 +1,10 @@
-### Manage cells in the [3.4.6.4] tiling using integer coordinates.
-### First, we give integer coordinates to the hexagons in the regular
-### [3^6] tiling, by giving coordinates relative to a basis with axes
-### (1,0) and (1/2,sqrt(3)/2).  Then we superimpose a scaled-up kite
-### tiling, so that every kite is uniquely associated with a hexagon
-### (and a fraction of the hexagons don't have a corresponding kite).
-### See the illustration in kitegrid.pdf.
+# Manage cells in the [3.4.6.4] tiling using integer coordinates.
+# First, we give integer coordinates to the hexagons in the regular
+# [3^6] tiling, by giving coordinates relative to a basis with axes
+# (1,0) and (1/2,sqrt(3)/2).  Then we superimpose a scaled-up kite
+# tiling, so that every kite is uniquely associated with a hexagon
+# (and a fraction of the hexagons don't have a corresponding kite).
+# See the illustration in kitegrid.pdf.
 
 from geom import Point, Transform
 
@@ -13,9 +13,9 @@ c_offsets = [
     [None, Point(0, 1), Point(-1, 1), None, Point(1, -1), Point(0, -1)],
 ]
 
-## Rotate 60 degrees CCW
+# Rotate 60 degrees CCW
 R60 = Transform(0, -1, 0, 1, 1, 0)
-## Rotate 60 degrees CW
+# Rotate 60 degrees CW
 R300 = Transform(1, 1, 0, -1, 0, 0)
 
 
@@ -84,7 +84,7 @@ def getRainbow(p, h, sop):
     ns = getNeighbours(p)
     i = ns.index(h) + len(ns)
 
-    ## Walk back to the first non-sop cell
+    # Walk back to the first non-sop cell
     while ns[(i - 1) % len(ns)] not in sop:
         i = i - 1
 
@@ -124,7 +124,7 @@ def getOrderedHalo(sop):
     while True:
         rainbow, next = getRainbow(cur, h, sop)
 
-        ## Add the subset of the rainbow that's not already used
+        # Add the subset of the rainbow that's not already used
         for p in rainbow:
             if not p in used:
                 ret.append(p)
@@ -143,17 +143,17 @@ def isSimplyConnected(sop):
     """Check whether the set of kite cells given by sop is simply
     connected"""
 
-    ## This can be computed by checking that sop's halo is a single
-    ## connected component relative to edge adjacencies.
+    # This can be computed by checking that sop's halo is a single
+    # connected component relative to edge adjacencies.
     halo = getHalo(sop)
     visited = set()
 
-    ## Pick a random halo element
+    # Pick a random halo element
     p = next(iter(halo))
     work = [p]
     visited.add(p)
 
-    ## Depth first search
+    # Depth first search
     while len(work) > 0:
         p = work.pop()
         ns = getAdjacents(p)
@@ -162,7 +162,7 @@ def isSimplyConnected(sop):
                 visited.add(n)
                 work.append(n)
 
-    ## Did you visit the whole halo?
+    # Did you visit the whole halo?
     return len(visited) == len(halo)
 
 
@@ -170,7 +170,7 @@ def getAllOrientations():
     """Produce a list of 12 transformation matrices corresponding to
     all possible orientations of a shape in the kite grid"""
 
-    ## Reflect the hex grid across the X axis
+    # Reflect the hex grid across the X axis
     Fy = Transform(1, 1, 0, 0, -1, 0)
 
     ret = []

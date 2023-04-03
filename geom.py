@@ -1,5 +1,5 @@
-### Basic geometry classes: points and affine transformations with
-### integer coordinates.
+# Basic geometry classes: points and affine transformations with
+# integer coordinates.
 
 from functools import total_ordering
 
@@ -31,13 +31,13 @@ class Point:
         else:
             return (self.y == other.y) and (self.x < other.x)
 
-    ## Allow points to be stored in sets or used as keys in dictionaries
+    # Allow points to be stored in sets or used as keys in dictionaries
     def __hash__(self):
         return hash((self.x, self.y))
 
 
-### The first two rows of a 3x3 2D affine transformation matrix, in
-### row-major order (with 0 0 1 as the implicit third row).
+# The first two rows of a 3x3 2D affine transformation matrix, in
+# row-major order (with 0 0 1 as the implicit third row).
 class Transform:
     def __init__(self, a=1, b=0, c=0, d=0, e=1, f=0):
         self.m = (a, b, c, d, e, f)

@@ -77,12 +77,12 @@ def withinClusterChecks(patch, labels):
     """Apply the within-cluster matching checks in Section 4.2 of the
     paper."""
 
-    ## Get the label for the central tile in the patch
+    # Get the label for the central tile in the patch
     cen = labels[Transform()]
 
     if cen == "H1":
-        ## Central tile is H1; need to check that neighbours H2, H3, and H4
-        ## are there.
+        # Central tile is H1; need to check that neighbours H2, H3, and H4
+        # are there.
         if labels[Transform(0, -1, -2, -1, 0, 4)] != "H2":
             print("H1 without an adjacent H2!")
             return False
@@ -120,10 +120,10 @@ def betweenClusterChecks(patch, labels):
     """Apply the between-cluster matching checks in Section 4.3 of
     the paper."""
 
-    ## Get the label for the central tile in the patch
+    # Get the label for the central tile in the patch
     cen = labels[Transform()]
 
-    ## H edge A+
+    # H edge A+
     if cen == "H2":
         if Transform(0, -1, -2, 1, 1, -2) in patch:
             if labels[Transform(0, -1, -2, 1, 1, -2)] not in ("T1", "P2"):
@@ -137,49 +137,49 @@ def betweenClusterChecks(patch, labels):
             print("H2 didn't have a valid A+ neighbour!")
             return False
 
-    ## H upper edge B-
+    # H upper edge B-
     if cen == "H1":
         if labels[Transform(-1, -1, 2, 0, 1, -4)] not in ("T1", "FP1"):
             print("H1 didn't have valid upper edge B- neighbour!")
             return False
 
-    ## H lower edge B-
+    # H lower edge B-
     if cen == "H3":
         if labels[Transform(1, 1, -2, -1, 0, -2)] not in ("T1", "FP1"):
             print("H3 didn't have valid lower edge B- neighbour!")
             return False
 
-    ## T upper edge A-
+    # T upper edge A-
     if cen == "T1":
         if labels[Transform(0, -1, 2, 1, 1, 2)] != "H2":
             print("T1 didn't have valid upper edge A- neighbour!")
             return False
 
-    ## T or P lower edge A-
+    # T or P lower edge A-
     if cen in ("T1", "P2"):
         if labels[Transform(1, 1, 4, -1, 0, -2)] != "H2":
             print("T or P didn't have valid lower edge A- neighbour!")
             return False
 
-    ## T, P or F edge B+
+    # T, P or F edge B+
     if cen in ("T1", "FP1"):
         if labels[Transform(1, 1, -4, -1, 0, 2)] not in ("H3", "H4"):
             print("T, P or F didn't have valid edge B+ neighbour!")
             return False
 
-    ## F edge F+
+    # F edge F+
     if cen == "F2":
         if labels[Transform(-1, -1, 8, 1, 0, -4)] != "F2":
             print("F didn't have valid edge F+ neighbour!")
             return False
 
-    ## F edge F-
+    # F edge F-
     if cen == "F2":
         if labels[Transform(0, 1, 4, -1, -1, 4)] != "F2":
             print("F didn't have valid edge F- neighbour!")
             return False
 
-    ## X+ edge at top of polykite
+    # X+ edge at top of polykite
     if cen in ("H2", "P2", "F2"):
         if Transform(0, 1, 0, -1, -1, 6) in patch:
             if labels[Transform(0, 1, 0, -1, -1, 6)] not in ("H2", "P2"):
@@ -193,7 +193,7 @@ def betweenClusterChecks(patch, labels):
             print("X+ top edge didn't have valid neighbour!")
             return False
 
-    ## X+ edge at right of polykite
+    # X+ edge at right of polykite
     if cen in ("H3", "H4", "FP1"):
         if Transform(-1, -1, 8, 1, 0, -4) in patch:
             if labels[Transform(-1, -1, 8, 1, 0, -4)] not in ("H2", "P2"):
@@ -207,7 +207,7 @@ def betweenClusterChecks(patch, labels):
             print("X+ right edge didn't have valid neighbour!")
             return False
 
-    ## X- edge at right of polykite
+    # X- edge at right of polykite
     if cen in ("H2", "P2"):
         if Transform(-1, -1, 6, 1, 0, 0) in patch:
             if labels[Transform(-1, -1, 6, 1, 0, 0)] not in ("H2", "F2", "P2"):
@@ -221,7 +221,7 @@ def betweenClusterChecks(patch, labels):
             print("X- right edge didn't have valid neighbour!")
             return False
 
-    ## X- edge at bottom of polykite
+    # X- edge at bottom of polykite
     if cen in ("H3", "H4", "FP1", "F2"):
         if Transform(1, 0, 2, 0, 1, -4) in patch:
             if labels[Transform(1, 0, 2, 0, 1, -4)] not in ("H2", "F2", "P2"):
@@ -235,7 +235,7 @@ def betweenClusterChecks(patch, labels):
             print("X- bottom edge didn't have valid neighbour!")
             return False
 
-    ## L edge at right of polykite
+    # L edge at right of polykite
     if cen == "P2":
         if Transform(-1, 0, 10, 0, -1, -2) in patch:
             if labels[Transform(-1, 0, 10, 0, -1, -2)] != "P2":
@@ -249,7 +249,7 @@ def betweenClusterChecks(patch, labels):
             print("L edge at right didn't have valid neighbour!")
             return False
 
-    ## L edge at bottom of polykite
+    # L edge at bottom of polykite
     if cen in ("FP1", "F2"):
         if Transform(0, -1, 0, 1, 1, -6) in patch:
             if labels[Transform(0, -1, 0, 1, 1, -6)] not in ("P2"):

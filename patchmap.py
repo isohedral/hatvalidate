@@ -1,8 +1,8 @@
-### A data structure that keeps track of a set of transformations which
-### might be used as part of an n-patch, and a set of cells that make up
-### a current patch.  We also track, for all possible patch cells, which
-### transformed tiles could potentially occupy those cells.  Used as part
-### of recursively surrounding (n-1)-patches to construct n-patches.
+# A data structure that keeps track of a set of transformations which
+# might be used as part of an n-patch, and a set of cells that make up
+# a current patch.  We also track, for all possible patch cells, which
+# transformed tiles could potentially occupy those cells.  Used as part
+# of recursively surrounding (n-1)-patches to construct n-patches.
 
 from hat import *
 from kitegrid import *
@@ -22,9 +22,9 @@ class PatchMap:
                 self.users.setdefault(P, []).append(T)
 
     def copy(self):
-        ## Based on the recursive computation in surround.py, we need
-        ## a deep copy of the occupancy map, but we can keep the other
-        ## information as-is (it won't be modified)
+        # Based on the recursive computation in surround.py, we need
+        # a deep copy of the occupancy map, but we can keep the other
+        # information as-is (it won't be modified)
         ret = PatchMap([])
         ret.shapes = self.shapes
         ret.users = self.users
@@ -63,7 +63,7 @@ class PatchMap:
     def isValid(self):
         """Verify that a patch is legitimate."""
 
-        ## Must be simply connected.  That's basically it.
+        # Must be simply connected.  That's basically it.
         return isSimplyConnected(self.occupied)
 
     def getCells(self, T):
